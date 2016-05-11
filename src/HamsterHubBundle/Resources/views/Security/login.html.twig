@@ -1,0 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+{% else %}
+    <script src="{{ asset('asset/login.js') }}"></script>
+    <div id="post_login" class="post_login">
+        <div id="loader" class="loader"><img src="http://tritonjoyeux.fr/magnify.svg" alt="loader"></div>
+
+        <a class="close" href="#">&times;</a>
+        <form action="{{ path("fos_user_security_check") }}" method="post" id="login">
+            <div class="user_login">
+                <label>Nom d'utilisateur :</label><br>
+                <input type="text" name="_username" required="required"/>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ fos_csrf_provider.generateCsrfToken('authenticate') }}"/>
+            </div>
+            <div class="user_pass">
+                <label>Mot de passe :</label><br>
+                <input type="password" name="_password" required="required"/>
+            </div>
+            <button type="submit" class="input_submit">Log in</button>
+            <div class="erreurLogin"></div>
+        </form>
+    </div>
+{% endif %}

@@ -1,0 +1,50 @@
+.post_login {
+  padding: 20px;
+  width: 50%;
+  height: 200px;
+  text-align: left;
+  margin-left: 20%;
+  position: fixed;
+  top: 100px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity:0;
+  background: $bg-color-post;
+  transition: opacity 500ms;
+  border-style: solid;
+  border-color: $header-bg-color;
+  border-radius: 20px;
+  border-width: 3px;
+  z-index: 10;
+}
+
+.post_login .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: $cross-color;
+}
+
+.post_login:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.post_login .close:hover {
+  color: $header-bg-color;
+}
+
+.user_login,.user_pass{
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+.user_pass{
+  margin-bottom: 20px;
+}

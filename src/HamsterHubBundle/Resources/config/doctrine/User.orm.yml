@@ -1,0 +1,16 @@
+HamsterHubBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: HamsterHubBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        birth:
+            type: date
+        path:
+            type: string
+    lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+{% extends ("HamsterHubBundle::layout.html.twig") %}
+{% block fos_user_content %}
+    <div id="content" class="content">
+        <script src="{{ asset("asset/script.js") }}"></script>
+
+        {% for video in videos %}
+            <ul class="videos">
+                <li class="video_name">Nom: {{ video.name }}</li>
+                <li class="video_img">
+                    <a href="/video/{{ video.id }}">
+                        <img src="{{ video.url }}">
+                    </a>
+                </li>
+                <li class="video_user">Utilisateur: <span class="user">{{ video.user }}</span></li>
+                <li class="video_description">Description: <span class="description">{{ video.description }}</span></li>
+                <li class="video_date">Mise en ligne le {{ video.date|date("d/m/Y") }}
+                    à {{ video.date|date("H:i:s") }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block current_page %}
+{{ user }} <img class="profil_picture" src="{{ asset(picture) }}" alt="{{ user }}">
+{% endblock current_page %}

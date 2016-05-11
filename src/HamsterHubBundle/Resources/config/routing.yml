@@ -1,0 +1,41 @@
+hamster_hub_homepage:
+    path:     /
+    defaults: { _controller: HamsterHubBundle:Views:index }
+
+video_upload:
+    path: /video/upload
+    defaults: { _controller: HamsterHubBundle:Video:upload }
+    methods: [post]
+
+video_delete:
+    path: /video/delete
+    defaults: { _controller: HamsterHubBundle:Video:delete }
+
+my_video:
+    path: /my_video
+    defaults: { _controller: HamsterHubBundle:Views:myvideo }
+
+video:
+    path: /video/{id_video}
+    defaults: { _controller: HamsterHubBundle:Views:video }
+
+comment_send:
+    path: /comment/send
+    defaults: { _controller: HamsterHubBundle:Comments:send }
+    methods: [post]
+
+comment_delete:
+    path: /comment/delete
+    defaults: { _controller: HamsterHubBundle:Comments:delete }
+
+profile_someone:
+    path: /profile/show/{id_user}
+    defaults: { _controller: HamsterHubBundle:Views:someone }
+
+profile_picture:
+    path: /profile/picture
+    defaults: { _controller: HamsterHubBundle:Views:picture }
+
+upload_picture:
+    path: /upload/picture
+    defaults: { _controller: HamsterHubBundle:Picture:upload }

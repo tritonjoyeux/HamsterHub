@@ -1,0 +1,14 @@
+{% extends ("HamsterHubBundle::layout.html.twig") %}
+{% block profile_pic %}
+    {{ user[0].username }}
+{% endblock profile_pic %}
+    {% block fos_user_content %}
+
+    <script src="{{ asset("asset/picture.js") }}"></script>
+
+     <img class="profil_picture" src="{{ asset(user[0].path) }}" alt="{{ user[0].username }}">
+    <form method="post" id="upload_pic">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Sauvegarder" name="save">
+    </form>
+{% endblock fos_user_content %}

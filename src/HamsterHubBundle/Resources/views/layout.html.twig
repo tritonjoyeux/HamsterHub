@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <title>HamsterHub</title>
+    <link rel="stylesheet" href="{{ asset("asset/style/style.css") }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div id="refresh"></div>
+<div class="container">
+    {% include("HamsterHubBundle:asset:header.html.twig") %}
+    <div class="current_page">
+        {% if(app.request.attributes.get('_route') == "hamster_hub_homepage") %}
+            <span class="title">Accueil</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "my_video") %}
+            <span class="title">Mes vidéos</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "video") %}
+            <span class="title">Vidéo</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "fos_user_profile_show") %}
+            <span class="title">Profil</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "fos_user_profile_edit") %}
+            <span class="title">Edition de profil</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "fos_user_registration_register") %}
+            <span class="title">Créer un compte</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "fos_user_security_login") %}
+            <span class="title">Se connecter</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "profile_someone") %}
+            <span class="title">Vidéos de {% block current_page %}{% endblock current_page %}</span>
+        {% endif %}
+        {% if(app.request.attributes.get('_route') == "profile_picture") %}
+            <span class="title">Photo de {% block profile_pic %}{% endblock profile_pic %}</span>
+        {% endif %}
+    </div>
+
+    {% include ("HamsterHubBundle:Security:login.html.twig") %}
+
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
+{% include("HamsterHubBundle:asset:footer.html.twig") %}
+
+</body>
+</html>

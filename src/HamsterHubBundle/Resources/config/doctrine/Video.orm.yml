@@ -1,0 +1,34 @@
+HamsterHubBundle\Entity\Video:
+    type: entity
+    table: null
+    repositoryClass: HamsterHubBundle\Repository\VideoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        url:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 500
+        date:
+            type: datetime
+        idUser:
+            type: integer
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: id
+            joinColumn:
+                name: id_user
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

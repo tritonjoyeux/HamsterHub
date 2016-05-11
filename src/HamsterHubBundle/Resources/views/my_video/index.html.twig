@@ -1,0 +1,41 @@
+{% extends ("HamsterHubBundle::layout.html.twig") %}
+{% block fos_user_content %}
+    <script src="{{ asset("asset/script.js") }}"></script>
+    <script src="{{ asset("asset/delete_video.js") }}"></script>
+    <div id="content" class="content">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="post" id="post">
+                <div id="loader" class="loader"><img src="http://tritonjoyeux.fr/gears.svg" alt="loader"></div>
+                <div id="post_content">
+                    <a class="close" href="#">&times;</a>
+                    <form method="post" id="post_video">
+                        <span id="name">Nom: <input type="text" name="name" class="input_name"></span><br>
+                    <span class="desc">Description: <textarea name="description" class="input_description"
+                                                              placeholder="Une jolie description ..."></textarea></span><br>
+                        <span id="url">URL: <input type="text" name="url" class="input_url"></span><br>
+                        <input type="submit" name="formVideo" value="Upload" class="input_submit">
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+        <ul class="videos"></ul>
+        {% for video in videos %}
+            <ul class="videos" id="{{ video.id }}">
+                <li class="video_name">Nom: {{ video.name }}</li>
+                <li class="video_img">
+                    <a href="/video/{{ video.id }}">
+                        <img src="{{ video.url }}" alt="{{ video.url }}">
+                    </a>
+                </li>
+                <li class="video_user">Utilisateur: <a href="/profile/show/{{ video.idUser }}"><span class="user">{{ video.user }}</span></a></li>
+                <li class="video_description">Description: <span class="description">{{ video.description }}</span></li>
+                <li class="video_date">Mise en ligne le {{ video.date|date("d/m/Y") }}
+                    à {{ video.date|date("H:i:s") }}</li>
+                <form method="post" class="delete_video">
+                    <input type="hidden" name="id" value="{{ video.id }}">
+                    <input type="submit" name="delete" value="Supprimer" class="input_submit">
+                </form>
+            </ul>
+        {% endfor %}
+    </div>
+{% endblock %}

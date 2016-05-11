@@ -1,0 +1,22 @@
+<script src="{{ asset('asset/burger.js') }}"></script>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <ul>
+        <li><a href="/">Accueil</a></li>
+        {% if(app.request.attributes.get('_route') == "my_video") %}
+            <li><a href="#post">Ajouter une video</a></li>
+        {% endif %}
+        <li><a href="/my_video">Mes vidéos</a></li>
+        <li><a href="/profile">Profil</a></li>
+        <li><a href="/profile/edit">Modifier le profil</a></li>
+        <li><a href="/profile/picture">Modifier la photo de profil</a></li>
+
+        <li><a href="/logout">Se déconnecter</a></li>
+    </ul>
+{% else %}
+    <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/">Profil</a></li>
+        <li><a href="/register">Créer un compte</a></li>
+        <li><a href="#post_login">Se connecter</a></li>
+    </ul>
+{% endif %}

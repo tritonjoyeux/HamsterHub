@@ -1,0 +1,44 @@
+{% extends ("HamsterHubBundle::layout.html.twig") %}
+{% block fos_user_content %}
+    <script src="{{ asset("asset/comment.js") }}"></script>
+    <script src="{{ asset("asset/delete_comment.js") }}"></script>
+    <div id="content" class="content">
+        {% for video in videos %}
+            <ul class="videos">
+                <li class="video_name">Nom: {{ video.name }}</li>
+                <li class="video_img">
+                    <iframe width="250" height="150" src="{{ video.url }}" allowfullscreen></iframe>
+                </li>
+                <li class="video_user">Utilisateur: <span class="user">{{ video.user }}</span></li>
+                <li class="video_description">Description: <span class="description">{{ video.description }}</span></li>
+                <li class="video_date">Mise en ligne le {{ video.date|date("d/m/Y") }}
+                    à {{ video.date|date("H:i:s") }}</li>
+            </ul>
+        {% endfor %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <form method="post" id="form_com">
+                <span class="desc">Commentaire: <textarea name="comment" class="input_description" id="comment"
+                                                          placeholder="Une petit commentaire ..."></textarea></span><br>
+                <input type="submit" name="formComment" value="Comment" class="input_submit">
+            </form>
+        {% endif %}
+        <ul class="comment"></ul>
+        {% for comment in comments %}
+            <ul class="comment" id="{{ comment.id }}">
+                <li class="video_user">Utilisateur: <a href="/profile/show/{{ comment.idUser }}"><span
+                                class="user">{{ comment.user }}</span></a></li>
+                <li class="video_description">Commentaire: <span class="description">{{ comment.content }}</span></li>
+                <li class="video_date">Mise en ligne le {{ comment.date|date("d/m/Y") }}
+                    à {{ comment.date|date("H:i:s") }}</li>
+                {% if app.user.username is defined %}
+                    {% if app.user.username == comment.user %}
+                        <form method="post" class="delete_comm">
+                            <input type="hidden" name="id" value="{{ comment.id }}">
+                            <input type="submit" name="delete" value="Supprimer" class="input_submit">
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        {% endfor %}
+    </div>
+{% endblock %}

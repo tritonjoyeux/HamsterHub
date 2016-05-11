@@ -1,0 +1,58 @@
+@import "variables";
+
+nav a{
+  display: block;
+  text-decoration: none;
+  color: $nav-a-color;
+}
+
+nav{
+  display: none;
+  position: fixed;
+  right: -1px;
+  padding-right: 10px;
+  top: 50px;
+  text-align: right;
+  line-height: 40px;
+  background-color: $nav-bg-color;
+  padding-left: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+img{
+  width: 250px;
+}
+
+.logo{
+  width: 40px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.burger{
+  cursor: pointer;
+  margin-top: 8px;
+  margin-right: 8px;
+  float: right;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 100px;
+}
+.croix1 ,.croix2{
+  position: fixed;
+  border-color: black;
+  width: 20px;
+}
+
+.croix1{
+  top: $croix-top;
+  right: $croix-right;
+}
+.croix2{
+  transform:rotate(90deg);
+  top: $croix-top;
+  right: $croix-right;
+}

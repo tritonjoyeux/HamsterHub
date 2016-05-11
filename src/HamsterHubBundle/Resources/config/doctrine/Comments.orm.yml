@@ -1,0 +1,30 @@
+HamsterHubBundle\Entity\Comments:
+    type: entity
+    table: null
+    repositoryClass: HamsterHubBundle\Repository\CommentsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idUser:
+            type: integer
+            column: id_user
+        content:
+            type: string
+            length: '500'
+        idVideo:
+            type: integer
+            column: id_video
+        date:
+            type: datetime
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: id
+            joinColumn:
+                name: id_user
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

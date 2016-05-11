@@ -1,0 +1,36 @@
+@import "variables";
+
+.videos {
+  line-height: 20px;
+  display: inline-block;
+}
+
+.video_name {
+  font-size: 20px;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.video_img img {
+  border-style: solid;
+  border-width: 2px;
+  border-color: $video-img-border-color;
+  border-radius: 10px;
+}
+
+.video_img img:visited {
+  border-color: $video-img-visited-border-color;
+}
+
+.video_img, .video_user, .video_description, .video_date {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.user {
+  font-style: italic;
+}
+
+.description:before, .description:after {
+  content: ' " ';
+}
